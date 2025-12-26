@@ -5,60 +5,394 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Dominic</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        dark: '#0f172a',
-                        primary: '#1e293b',
-                        accent: '#e11d48',
-                        textGray: '#94a3b8'
+                        dark: '#050816',
+                        primary: '#0a0f1a',
+                        secondary: '#111827',
+                        accent: '#6366f1',
+                        accentLight: '#818cf8',
+                        neon: '#22d3ee',
+                        textGray: '#9ca3af',
+                        textLight: '#e5e7eb'
                     },
-                    fontFamily: { sans: ['Poppins', 'sans-serif'] }
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    }
                 }
             }
         }
     </script>
     <style>
-        body { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            overflow-x: hidden;
+            background: #050816;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #050816 0%, #0a0f1a 50%, #111827 100%);
+            position: relative;
+        }
+
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(34, 211, 238, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(99, 102, 241, 0.6);
+            border-radius: 50%;
+            animation: float-particle 15s infinite ease-in-out;
+        }
+
+        .particle:nth-child(2) { left: 20%; animation-delay: -2s; background: rgba(34, 211, 238, 0.5); }
+        .particle:nth-child(3) { left: 40%; animation-delay: -4s; width: 3px; height: 3px; }
+        .particle:nth-child(4) { left: 60%; animation-delay: -6s; background: rgba(139, 92, 246, 0.5); }
+        .particle:nth-child(5) { left: 80%; animation-delay: -8s; width: 5px; height: 5px; }
+
+        @keyframes float-particle {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
         .glass-card {
-            background: rgba(30, 41, 59, 0.8);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-glass {
+            background: rgba(5, 8, 22, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        /* Project Card Styles */
+        .project-card {
+            background: rgba(17, 24, 39, 0.6);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 
+                0 25px 50px rgba(99, 102, 241, 0.15),
+                0 0 0 1px rgba(99, 102, 241, 0.2);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-image {
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-overlay {
+            background: linear-gradient(to top, rgba(5, 8, 22, 0.95), rgba(5, 8, 22, 0.4), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .project-card:hover .project-overlay {
+            pointer-events: auto;
+        }
+
+        .project-link {
+            pointer-events: auto;
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: rgba(99, 102, 241, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .project-card:hover .project-link {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .project-link:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        .project-link:hover {
+            background: #6366f1;
+            border-color: #6366f1;
+            transform: translateY(0) scale(1.1);
+        }
+
+        /* Tech Badge */
+        .tech-badge {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
             transition: all 0.3s ease;
         }
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: #e11d48;
+
+        .tech-badge:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Loading skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.1) 25%, rgba(99, 102, 241, 0.2) 50%, rgba(99, 102, 241, 0.1) 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+        }
+
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Reveal animations */
+        .reveal-hidden {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animation delays */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+        .delay-500 { transition-delay: 500ms; }
+
+        /* Filter buttons */
+        .filter-btn {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #6366f1;
+            border-color: #6366f1;
+            color: white;
         }
     </style>
 </head>
-<body class="bg-dark text-white font-sans antialiased">
+<body class="gradient-bg text-white font-sans antialiased min-h-screen">
 
-    <nav class="fixed w-full z-50 glass-card px-6 py-4 flex justify-between items-center">
-        <div class="text-2xl font-bold text-accent tracking-wider cursor-pointer" onclick="window.location.href='/'">DOMINIC</div>
-        <div class="hidden md:flex space-x-10 text-sm font-semibold tracking-wide">
-            <a href="/" class="hover:text-accent transition duration-300">HOME</a>
+    <!-- Particles -->
+    <div class="particles">
+        <div class="particle" style="left: 5%;"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-glass px-6 lg:px-12 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="/" class="flex items-center space-x-2 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-neon flex items-center justify-center font-display font-bold text-lg group-hover:scale-110 transition">D</div>
+                <span class="font-display font-bold text-xl tracking-wide">DOMINIC</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-10 text-sm font-medium">
+                <a href="/" class="text-textLight hover:text-accent transition duration-300">Home</a>
+                <a href="/#about" class="text-textLight hover:text-accent transition duration-300">About</a>
+                <a href="/#contact" class="text-textLight hover:text-accent transition duration-300">Contact</a>
+            </div>
+            <a href="/#contact" class="hidden md:flex px-5 py-2.5 bg-gradient-to-r from-accent to-accentLight text-white rounded-xl font-medium text-sm hover:shadow-lg hover:shadow-accent/25 transition">
+                Hire Me
+            </a>
         </div>
     </nav>
 
-    <section class="pt-32 pb-12 px-6 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">My <span class="text-accent">Projects</span></h1>
-        <p class="text-textGray max-w-xl mx-auto">A selection of my recent backend and full-stack work. Built with precision and scalability in mind.</p>
-    </section>
+    <!-- Hero Header -->
+    <section class="pt-32 pb-16 px-6 text-center relative section-observer">
+        <div class="absolute top-20 left-1/4 w-72 h-72 bg-accent/20 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-neon/15 blur-[100px] rounded-full"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="reveal-hidden">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-6">
+                    <i class="fas fa-folder-open mr-2"></i>My Work
+                </span>
+            </div>
+            <h1 class="reveal-hidden delay-100 font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+                Featured <span class="gradient-text">Projects</span>
+            </h1>
+            <p class="reveal-hidden delay-200 text-textGray text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                A curated collection of my backend and full-stack projects. Each one built with precision, scalability, and clean code in mind.
+            </p>
 
-    <section class="container mx-auto px-6 pb-24">
-        <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="text-center col-span-full text-gray-500 mt-10">Loading projects...</div>
+            <!-- Stats -->
+            <div class="reveal-hidden delay-300 flex justify-center gap-8 mt-10">
+                <div class="text-center">
+                    <p class="text-3xl font-display font-bold gradient-text" id="project-count">0</p>
+                    <p class="text-xs text-textGray uppercase tracking-wider mt-1">Projects</p>
+                </div>
+                <div class="w-px bg-accent/20"></div>
+                <div class="text-center">
+                    <p class="text-3xl font-display font-bold gradient-text">100%</p>
+                    <p class="text-xs text-textGray uppercase tracking-wider mt-1">Completed</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer class="bg-dark border-t border-gray-800 py-8 text-center text-gray-500 text-sm">
-        <p>&copy; 2025 Dominic. All Rights Reserved.</p>
+    <!-- Divider -->
+    <div class="h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent max-w-4xl mx-auto"></div>
+
+    <!-- Projects Section -->
+    <section class="container mx-auto max-w-7xl px-6 py-20 section-observer">
+        <!-- Projects Grid -->
+        <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Loading skeletons -->
+            <div class="rounded-3xl overflow-hidden">
+                <div class="skeleton h-56 w-full"></div>
+                <div class="p-6 bg-secondary/50">
+                    <div class="skeleton h-6 w-3/4 rounded mb-3"></div>
+                    <div class="skeleton h-4 w-full rounded mb-2"></div>
+                    <div class="skeleton h-4 w-2/3 rounded"></div>
+                </div>
+            </div>
+            <div class="rounded-3xl overflow-hidden">
+                <div class="skeleton h-56 w-full"></div>
+                <div class="p-6 bg-secondary/50">
+                    <div class="skeleton h-6 w-3/4 rounded mb-3"></div>
+                    <div class="skeleton h-4 w-full rounded mb-2"></div>
+                    <div class="skeleton h-4 w-2/3 rounded"></div>
+                </div>
+            </div>
+            <div class="rounded-3xl overflow-hidden">
+                <div class="skeleton h-56 w-full"></div>
+                <div class="p-6 bg-secondary/50">
+                    <div class="skeleton h-6 w-3/4 rounded mb-3"></div>
+                    <div class="skeleton h-4 w-full rounded mb-2"></div>
+                    <div class="skeleton h-4 w-2/3 rounded"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 px-6 relative">
+        <div class="absolute inset-0 bg-gradient-to-t from-accent/5 to-transparent"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">
+                Have a Project in Mind?
+            </h2>
+            <p class="text-textGray text-lg mb-8">
+                Let's collaborate and build something exceptional together.
+            </p>
+            <a href="/#contact" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-accent to-accentLight text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-accent/25 transition transform hover:-translate-y-1">
+                <span>Get In Touch</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-accent/10 py-12">
+        <div class="container mx-auto max-w-7xl px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <a href="/" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-neon flex items-center justify-center font-display font-bold text-lg">D</div>
+                    <span class="font-display font-bold text-xl tracking-wide">DOMINIC</span>
+                </a>
+                
+                <div class="flex items-center gap-4">
+                    <a href="https://github.com/Dominic62q" target="_blank" class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-textGray hover:text-white hover:bg-accent hover:border-accent transition">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/dominic-amuah-bb116428b/" target="_blank" class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-textGray hover:text-white hover:bg-accent hover:border-accent transition">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                
+                <p class="text-textGray text-sm">&copy; 2025 Dominic. Crafted with <i class="fas fa-heart text-accent"></i></p>
+            </div>
+        </div>
     </footer>
 
     <script>
@@ -66,39 +400,95 @@
 
         document.addEventListener('DOMContentLoaded', async () => {
             const container = document.getElementById('projects-container');
+            const projectCount = document.getElementById('project-count');
+
+            // Reveal animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const hiddenElements = entry.target.querySelectorAll('.reveal-hidden');
+                        hiddenElements.forEach(el => el.classList.add('reveal-visible'));
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.section-observer').forEach(section => {
+                observer.observe(section);
+            });
             
             try {
                 const response = await fetch(API_URL);
                 const projects = await response.json();
 
+                // Update project count
+                projectCount.textContent = projects.length;
+
                 if (projects.length === 0) {
-                    container.innerHTML = '<div class="text-center col-span-full text-gray-400">No projects added yet. Check back soon!</div>';
+                    container.innerHTML = `
+                        <div class="col-span-full text-center py-20">
+                            <div class="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-folder-open text-3xl text-accent"></i>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold text-white mb-2">No Projects Yet</h3>
+                            <p class="text-textGray">Exciting projects are coming soon. Check back later!</p>
+                        </div>
+                    `;
                     return;
                 }
 
-                container.innerHTML = projects.map(project => `
-                    <div class="glass-card rounded-xl overflow-hidden project-card group flex flex-col h-full">
-                        <div class="h-48 overflow-hidden relative">
-                            <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center space-x-4">
-                                ${project.github_link ? `<a href="${project.github_link}" target="_blank" class="w-10 h-10 bg-white text-dark rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition"><i class="fab fa-github"></i></a>` : ''}
-                                ${project.live_link ? `<a href="${project.live_link}" target="_blank" class="w-10 h-10 bg-white text-dark rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition"><i class="fas fa-external-link-alt"></i></a>` : ''}
+                container.innerHTML = projects.map((project, index) => `
+                    <div class="project-card rounded-3xl overflow-hidden reveal-hidden delay-${(index % 3 + 1) * 100}" style="transition-delay: ${index * 100}ms">
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="${project.image}" alt="${project.title}" class="project-image w-full h-full object-cover">
+                            <div class="project-overlay absolute inset-0 flex items-end justify-center pb-6 gap-4">
+                                ${project.github_link ? `
+                                    <a href="${project.github_link}" target="_blank" class="project-link text-white hover:text-white">
+                                        <i class="fab fa-github text-lg"></i>
+                                    </a>
+                                ` : ''}
+                                ${project.live_link ? `
+                                    <a href="${project.live_link}" target="_blank" class="project-link text-white hover:text-white">
+                                        <i class="fas fa-external-link-alt text-lg"></i>
+                                    </a>
+                                ` : ''}
                             </div>
                         </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-xl font-bold text-white mb-2">${project.title}</h3>
-                            <p class="text-textGray text-sm leading-relaxed mb-4 flex-grow">${project.description}</p>
-                            <div class="flex flex-wrap gap-2 mt-auto">
-                                <span class="px-3 py-1 text-xs font-medium bg-primary text-accent rounded-full border border-gray-700">Django</span>
-                                <span class="px-3 py-1 text-xs font-medium bg-primary text-accent rounded-full border border-gray-700">MySQL</span>
+                        <div class="p-6 relative z-10">
+                            <h3 class="font-display text-xl font-bold text-white mb-2 group-hover:text-accent transition">${project.title}</h3>
+                            <p class="text-textGray text-sm leading-relaxed mb-4 line-clamp-2">${project.description}</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-badge px-3 py-1 rounded-lg text-xs text-accent">Django</span>
+                                <span class="tech-badge px-3 py-1 rounded-lg text-xs text-neon">MySQL</span>
+                                <span class="tech-badge px-3 py-1 rounded-lg text-xs text-purple-400">REST API</span>
                             </div>
                         </div>
                     </div>
                 `).join('');
+
+                // Trigger reveal animations for dynamically added cards
+                setTimeout(() => {
+                    container.querySelectorAll('.reveal-hidden').forEach(el => {
+                        el.classList.add('reveal-visible');
+                    });
+                }, 100);
                 
             } catch (error) {
                 console.error('Error fetching projects:', error);
-                container.innerHTML = '<div class="text-center col-span-full text-red-500">Failed to load projects.</div>';
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-20">
+                        <div class="w-20 h-20 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-exclamation-triangle text-3xl text-red-400"></i>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-white mb-2">Oops! Something went wrong</h3>
+                        <p class="text-textGray">Failed to load projects. Please try again later.</p>
+                    </div>
+                `;
             }
         });
     </script>
