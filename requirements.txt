@@ -3,6 +3,7 @@ certifi==2025.7.9
 charset-normalizer==3.4.2
 dig==0.1.10
 dj-database-url==3.0.1
+dj-static==0.0.6
 Django==5.2.7
 django-filter==25.2
 django-taggit==6.1.0
@@ -25,6 +26,7 @@ pytz==2025.2
 requests==2.7.0
 six==1.17.0
 sqlparse==0.5.3
+static3==0.7.0
 tzdata==2025.2
 urllib3==2.5.0
 whitenoise==6.11.0

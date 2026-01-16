@@ -184,8 +184,3 @@ if not DEBUG:
 # Media files (uploads)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# In production, media files are copied to static during build
-# This allows WhiteNoise to serve them
-if not DEBUG:
-    MEDIA_URL = '/static/media/'
