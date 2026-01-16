@@ -1,496 +1,128 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Dominic</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="bg-[#0f172a] min-h-screen pt-32 pb-20">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        dark: '#050816',
-                        primary: '#0a0f1a',
-                        secondary: '#111827',
-                        accent: '#6366f1',
-                        accentLight: '#818cf8',
-                        neon: '#22d3ee',
-                        textGray: '#9ca3af',
-                        textLight: '#e5e7eb'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        html { scroll-behavior: smooth; }
-        
-        body { 
-            overflow-x: hidden;
-            background: #050816;
-        }
+    <div class="max-w-7xl mx-auto px-4 mb-20">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-800 pb-8">
+            <div class="max-w-2xl">
+                <span class="text-indigo-500 font-bold tracking-widest text-sm uppercase mb-2 block">My Portfolio</span>
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
+                    Engineering <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Scalable Solutions</span>
+                </h1>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    A showcase of backend architectures, RESTful APIs, and full-stack applications. 
+                    Built with a focus on security, scalability, and clean code principles.
+                </p>
+            </div>
+            
+            <div class="mt-8 md:mt-0 flex-shrink-0">
+                <a href="https://github.com/Dominic62q" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white rounded-lg transition-all group">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.007.563 7.002 4.147 7.002 8.529 0 4.757-3.856 8.618-8.618 8.618-4.759 0-8.62-3.861-8.62-8.618 0-4.382 2.994-7.965 7.001-8.529.609.118.801-.257.801-.576v-3.293c0-1.12.393-1.85.823-2.222zm-5.479 6.221c-2.671-.297-5.479.715-5.479 5.921 0 1.31.465 2.38 1.235 3.221-.124-.302-.535-1.522.118-3.176 0 0 1.006-.321 3.297 1.23.959-.266 1.986-.399 3.006-.404 1.02.005 2.046.138 3.003.404 2.293-1.553 3.301-1.23 3.301-1.23.652 1.652.241 2.873.117 3.176.767.84 1.236 1.911 1.236 3.221 0 4.597-2.802 5.626-5.467 5.931.344.299.655.829.762 1.604-.685.307-2.422.837-3.492-.997 0 0-.634-1.153-1.839-1.237 0 0-1.172-.016-.083.729 0 0 .787.369 1.333 1.756 0 0 .695 2.142 4.033 1.416v2.234c0 .316.194.688.793.577 4.767-1.587 8.207-6.085 8.207-11.387 0-6.627-5.373-12-12-12z"/></svg>
+                    <span>View GitHub Profile</span>
+                    <svg class="w-4 h-4 text-gray-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
+        </div>
 
-        .gradient-bg {
-            background: linear-gradient(135deg, #050816 0%, #0a0f1a 50%, #111827 100%);
-            position: relative;
-        }
-
-        .gradient-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(34, 211, 238, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        /* Floating particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(99, 102, 241, 0.6);
-            border-radius: 50%;
-            animation: float-particle 15s infinite ease-in-out;
-        }
-
-        .particle:nth-child(2) { left: 20%; animation-delay: -2s; background: rgba(34, 211, 238, 0.5); }
-        .particle:nth-child(3) { left: 40%; animation-delay: -4s; width: 3px; height: 3px; }
-        .particle:nth-child(4) { left: 60%; animation-delay: -6s; background: rgba(139, 92, 246, 0.5); }
-        .particle:nth-child(5) { left: 80%; animation-delay: -8s; width: 5px; height: 5px; }
-
-        @keyframes float-particle {
-            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
-        }
-
-        .glass-card {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(99, 102, 241, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-glass {
-            background: rgba(5, 8, 22, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
-        }
-
-        /* Project Card Styles */
-        .project-card {
-            background: rgba(17, 24, 39, 0.6);
-            border: 1px solid rgba(99, 102, 241, 0.1);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 1;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(99, 102, 241, 0.4);
-            box-shadow: 
-                0 25px 50px rgba(99, 102, 241, 0.15),
-                0 0 0 1px rgba(99, 102, 241, 0.2);
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
-        .project-card:hover .project-image {
-            transform: scale(1.1);
-        }
-
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-
-        .project-image {
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .project-overlay {
-            background: linear-gradient(to top, rgba(5, 8, 22, 0.95), rgba(5, 8, 22, 0.4), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-
-        .project-card:hover .project-overlay {
-            pointer-events: auto;
-        }
-
-        .project-link {
-            pointer-events: auto;
-            cursor: pointer;
-            position: relative;
-            z-index: 10;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 16px;
-            background: rgba(99, 102, 241, 0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            transition: all 0.3s ease;
-            transform: translateY(20px);
-            opacity: 0;
-        }
-
-        .project-card:hover .project-link {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .project-link:nth-child(2) {
-            transition-delay: 0.1s;
-        }
-
-        .project-link:hover {
-            background: #6366f1;
-            border-color: #6366f1;
-            transform: translateY(0) scale(1.1);
-        }
-
-        /* Tech Badge */
-        .tech-badge {
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .tech-badge:hover {
-            background: rgba(99, 102, 241, 0.2);
-            transform: scale(1.05);
-        }
-
-        /* Gradient text */
-        .gradient-text {
-            background: linear-gradient(135deg, #6366f1, #22d3ee);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Loading skeleton */
-        .skeleton {
-            background: linear-gradient(90deg, rgba(99, 102, 241, 0.1) 25%, rgba(99, 102, 241, 0.2) 50%, rgba(99, 102, 241, 0.1) 75%);
-            background-size: 200% 100%;
-            animation: skeleton-loading 1.5s infinite;
-        }
-
-        @keyframes skeleton-loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        /* Reveal animations */
-        .reveal-hidden {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Staggered animation delays */
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
-        .delay-500 { transition-delay: 500ms; }
-
-        /* Filter buttons */
-        .filter-btn {
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: #6366f1;
-            border-color: #6366f1;
-            color: white;
-        }
-    </style>
-</head>
-<body class="gradient-bg text-white font-sans antialiased min-h-screen">
-
-    <!-- Particles -->
-    <div class="particles">
-        <div class="particle" style="left: 5%;"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+        <div class="flex flex-wrap gap-3">
+            <span class="px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm rounded-full">Python & Django</span>
+            <span class="px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm rounded-full">REST APIs</span>
+            <span class="px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm rounded-full">PostgreSQL</span>
+            <span class="px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm rounded-full">System Support</span>
+        </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 nav-glass px-6 lg:px-12 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="/" class="flex items-center space-x-2 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-neon flex items-center justify-center font-display font-bold text-lg group-hover:scale-110 transition">D</div>
-                <span class="font-display font-bold text-xl tracking-wide">DOMINIC</span>
-            </a>
-            <div class="hidden md:flex items-center space-x-10 text-sm font-medium">
-                <a href="/" class="text-textLight hover:text-accent transition duration-300">Home</a>
-                <a href="/#about" class="text-textLight hover:text-accent transition duration-300">About</a>
-                <a href="/#contact" class="text-textLight hover:text-accent transition duration-300">Contact</a>
-            </div>
-            <a href="/#contact" class="hidden md:flex px-5 py-2.5 bg-gradient-to-r from-accent to-accentLight text-white rounded-xl font-medium text-sm hover:shadow-lg hover:shadow-accent/25 transition">
-                Hire Me
-            </a>
+    <div class="max-w-7xl mx-auto px-4">
+        <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-gray-800/50 rounded-2xl h-96 animate-pulse border border-gray-700"></div>
+            <div class="bg-gray-800/50 rounded-2xl h-96 animate-pulse border border-gray-700"></div>
+            <div class="bg-gray-800/50 rounded-2xl h-96 animate-pulse border border-gray-700"></div>
         </div>
-    </nav>
-
-    <!-- Hero Header -->
-    <section class="pt-32 pb-16 px-6 text-center relative section-observer">
-        <div class="absolute top-20 left-1/4 w-72 h-72 bg-accent/20 blur-[120px] rounded-full"></div>
-        <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-neon/15 blur-[100px] rounded-full"></div>
         
-        <div class="max-w-4xl mx-auto relative z-10">
-            <div class="reveal-hidden">
-                <span class="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-6">
-                    <i class="fas fa-folder-open mr-2"></i>My Work
-                </span>
-            </div>
-            <h1 class="reveal-hidden delay-100 font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-                Featured <span class="gradient-text">Projects</span>
-            </h1>
-            <p class="reveal-hidden delay-200 text-textGray text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-                A curated collection of my backend and full-stack projects. Each one built with precision, scalability, and clean code in mind.
-            </p>
-
-            <!-- Stats -->
-            <div class="reveal-hidden delay-300 flex justify-center gap-8 mt-10">
-                <div class="text-center">
-                    <p class="text-3xl font-display font-bold gradient-text" id="project-count">0</p>
-                    <p class="text-xs text-textGray uppercase tracking-wider mt-1">Projects</p>
-                </div>
-                <div class="w-px bg-accent/20"></div>
-                <div class="text-center">
-                    <p class="text-3xl font-display font-bold gradient-text">100%</p>
-                    <p class="text-xs text-textGray uppercase tracking-wider mt-1">Completed</p>
-                </div>
-            </div>
+        <div id="empty-state" class="hidden text-center py-20">
+            <p class="text-gray-400 text-lg">Projects are currently being updated. Check back soon!</p>
         </div>
-    </section>
+    </div>
+</div>
+{% endblock %}
 
-    <!-- Divider -->
-    <div class="h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent max-w-4xl mx-auto"></div>
+{% block scripts %}
+<script>
+    fetch('/api/projects/')
+    .then(res => res.json())
+    .then(data => {
+        const grid = document.getElementById('project-grid');
+        const emptyState = document.getElementById('empty-state');
+        
+        grid.innerHTML = ''; // Clear skeletons
 
-    <!-- Projects Section -->
-    <section class="container mx-auto max-w-7xl px-6 py-20 section-observer">
-        <!-- Projects Grid -->
-        <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Loading skeletons -->
-            <div class="rounded-3xl overflow-hidden">
-                <div class="skeleton h-56 w-full"></div>
-                <div class="p-6 bg-secondary/50">
-                    <div class="skeleton h-6 w-3/4 rounded mb-3"></div>
-                    <div class="skeleton h-4 w-full rounded mb-2"></div>
-                    <div class="skeleton h-4 w-2/3 rounded"></div>
-                </div>
-            </div>
-            <div class="rounded-3xl overflow-hidden">
-                <div class="skeleton h-56 w-full"></div>
-                <div class="p-6 bg-secondary/50">
-                    <div class="skeleton h-6 w-3/4 rounded mb-3"></div>
-                    <div class="skeleton h-4 w-full rounded mb-2"></div>
-                    <div class="skeleton h-4 w-2/3 rounded"></div>
-                </div>
-            </div>
-            <div class="rounded-3xl overflow-hidden">
-                <div class="skeleton h-56 w-full"></div>
-                <div class="p-6 bg-secondary/50">
-                    <div class="skeleton h-6 w-3/4 rounded mb-3"></div>
-                    <div class="skeleton h-4 w-full rounded mb-2"></div>
-                    <div class="skeleton h-4 w-2/3 rounded"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+        if (data.length === 0) {
+            emptyState.classList.remove('hidden');
+            return;
+        }
 
-    <!-- Call to Action -->
-    <section class="py-20 px-6 relative">
-        <div class="absolute inset-0 bg-gradient-to-t from-accent/5 to-transparent"></div>
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">
-                Have a Project in Mind?
-            </h2>
-            <p class="text-textGray text-lg mb-8">
-                Let's collaborate and build something exceptional together.
-            </p>
-            <a href="/#contact" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-accent to-accentLight text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-accent/25 transition transform hover:-translate-y-1">
-                <span>Get In Touch</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="border-t border-accent/10 py-12">
-        <div class="container mx-auto max-w-7xl px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <a href="/" class="flex items-center space-x-2">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-neon flex items-center justify-center font-display font-bold text-lg">D</div>
-                    <span class="font-display font-bold text-xl tracking-wide">DOMINIC</span>
-                </a>
-                
-                <div class="flex items-center gap-4">
-                    <a href="https://github.com/Dominic62q" target="_blank" class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-textGray hover:text-white hover:bg-accent hover:border-accent transition">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/dominic-amuah-bb116428b/" target="_blank" class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-textGray hover:text-white hover:bg-accent hover:border-accent transition">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                </div>
-                
-                <p class="text-textGray text-sm">&copy; 2025 Dominic. Crafted with <i class="fas fa-heart text-accent"></i></p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        const API_URL = '/api/projects-api/';
-
-        document.addEventListener('DOMContentLoaded', async () => {
-            const container = document.getElementById('projects-container');
-            const projectCount = document.getElementById('project-count');
-
-            // Reveal animations
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const hiddenElements = entry.target.querySelectorAll('.reveal-hidden');
-                        hiddenElements.forEach(el => el.classList.add('reveal-visible'));
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.section-observer').forEach(section => {
-                observer.observe(section);
-            });
+        data.forEach((p, index) => {
+            // Stagger animation delay based on index
+            const delay = index * 100;
             
-            try {
-                const response = await fetch(API_URL);
-                const projects = await response.json();
-
-                // Update project count
-                projectCount.textContent = projects.length;
-
-                if (projects.length === 0) {
-                    container.innerHTML = `
-                        <div class="col-span-full text-center py-20">
-                            <div class="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6">
-                                <i class="fas fa-folder-open text-3xl text-accent"></i>
-                            </div>
-                            <h3 class="font-display text-2xl font-bold text-white mb-2">No Projects Yet</h3>
-                            <p class="text-textGray">Exciting projects are coming soon. Check back later!</p>
-                        </div>
-                    `;
-                    return;
-                }
-
-                container.innerHTML = projects.map((project, index) => `
-                    <div class="project-card rounded-3xl overflow-hidden reveal-hidden delay-${(index % 3 + 1) * 100}" style="transition-delay: ${index * 100}ms">
-                        <div class="relative h-56 overflow-hidden">
-                            <img src="${project.image}" alt="${project.title}" class="project-image w-full h-full object-cover">
-                            <div class="project-overlay absolute inset-0 flex items-end justify-center pb-6 gap-4">
-                                ${project.github_link ? `
-                                    <a href="${project.github_link}" target="_blank" class="project-link text-white hover:text-white">
-                                        <i class="fab fa-github text-lg"></i>
-                                    </a>
-                                ` : ''}
-                                ${project.live_link ? `
-                                    <a href="${project.live_link}" target="_blank" class="project-link text-white hover:text-white">
-                                        <i class="fas fa-external-link-alt text-lg"></i>
-                                    </a>
-                                ` : ''}
-                            </div>
-                        </div>
-                        <div class="p-6 relative z-10">
-                            <h3 class="font-display text-xl font-bold text-white mb-2 group-hover:text-accent transition">${project.title}</h3>
-                            <p class="text-textGray text-sm leading-relaxed mb-4 line-clamp-2">${project.description}</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tech-badge px-3 py-1 rounded-lg text-xs text-accent">Django</span>
-                                <span class="tech-badge px-3 py-1 rounded-lg text-xs text-neon">MySQL</span>
-                                <span class="tech-badge px-3 py-1 rounded-lg text-xs text-purple-400">REST API</span>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-
-                // Trigger reveal animations for dynamically added cards
-                setTimeout(() => {
-                    container.querySelectorAll('.reveal-hidden').forEach(el => {
-                        el.classList.add('reveal-visible');
-                    });
-                }, 100);
+            const html = `
+            <article class="group relative bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden hover:border-indigo-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 flex flex-col h-full opacity-0 animate-fade-in-up" style="animation-delay: ${delay}ms; animation-fill-mode: forwards;">
                 
-            } catch (error) {
-                console.error('Error fetching projects:', error);
-                container.innerHTML = `
-                    <div class="col-span-full text-center py-20">
-                        <div class="w-20 h-20 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-exclamation-triangle text-3xl text-red-400"></i>
-                        </div>
-                        <h3 class="font-display text-2xl font-bold text-white mb-2">Oops! Something went wrong</h3>
-                        <p class="text-textGray">Failed to load projects. Please try again later.</p>
+                <div class="h-56 overflow-hidden relative">
+                    <div class="absolute inset-0 bg-indigo-900/20 group-hover:bg-transparent transition-colors z-10"></div>
+                    <img src="${p.image}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" alt="${p.title}">
+                </div>
+
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="mb-4">
+                        <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">${p.title}</h3>
+                        <div class="w-12 h-1 bg-indigo-600 rounded-full mb-4"></div>
+                        <p class="text-gray-400 text-sm leading-relaxed line-clamp-3">${p.description}</p>
                     </div>
-                `;
-            }
+
+                    <div class="mt-auto pt-6 border-t border-gray-800 flex items-center justify-between gap-4">
+                        <div class="flex gap-3 w-full">
+                            ${p.github_link ? `
+                            <a href="${p.github_link}" target="_blank" class="flex-1 flex items-center justify-center gap-2 py-2.5 bg-gray-800 hover:bg-white text-gray-300 hover:text-gray-900 rounded-lg text-sm font-bold transition-all border border-gray-700 hover:border-white">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.007.563 7.002 4.147 7.002 8.529 0 4.757-3.856 8.618-8.618 8.618-4.759 0-8.62-3.861-8.62-8.618 0-4.382 2.994-7.965 7.001-8.529.609.118.801-.257.801-.576v-3.293c0-1.12.393-1.85.823-2.222z"/></svg>
+                                Code
+                            </a>` : ''}
+                            
+                            ${p.live_link ? `
+                            <a href="${p.live_link}" target="_blank" class="flex-1 flex items-center justify-center gap-2 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-bold transition-all shadow-lg shadow-indigo-500/20">
+                                Live Demo
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>` : ''}
+                        </div>
+                    </div>
+                </div>
+            </article>
+            `;
+            grid.innerHTML += html;
         });
-    </script>
-</body>
-</html>
+    })
+    .catch(err => {
+        console.error("Error fetching projects:", err);
+    });
+</script>
+
+<style>
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .animate-fade-in-up {
+        animation-name: fadeInUp;
+        animation-duration: 0.6s;
+        animation-timing-function: ease-out;
+    }
+</style>
+{% endblock %}

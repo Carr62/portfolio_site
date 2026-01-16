@@ -1,20 +1,21 @@
+# MyPortfolio/urls.py (Main Project URLs)
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-# 1. Import the view from your app
-from portfolio.views import index
+# Import both frontend views
+from portfolio.views import index, projects_page
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     
-    # API endpoints
+    # API endpoints (Prefixed with /api/)
     path("api/", include("portfolio.urls")),
 
-    # 2. The Homepage Path
-    # When the URL is empty (e.g., http://127.0.0.1:8000/), call the 'index' view
+    # Frontend Pages
     path("", index, name="index"),
+    path("works/", projects_page, name="projects"), # Added this
 ]
 
 if settings.DEBUG:
